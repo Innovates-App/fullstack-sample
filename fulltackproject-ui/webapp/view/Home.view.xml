@@ -1,0 +1,26 @@
+<mvc:View controllerName="fulltackprojectui.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+
+        <Table items="{/Books}">
+
+            <columns>
+                <Column >
+                    <Text text="Book ID"></Text>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem >
+                    <Text  text="{ID}"></Text>
+                </ColumnListItem>
+            
+            </items>
+        
+        </Table>
+
+
+    </Page>
+</mvc:View>
