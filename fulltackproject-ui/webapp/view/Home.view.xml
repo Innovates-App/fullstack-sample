@@ -8,10 +8,10 @@
 
             <fb:FilterBar id="filterbar" search="onAvvio">
 				<fb:filterGroupItems>
-					<fb:FilterGroupItem name="Cognome" label="Cognome" groupName="Group1" visibleInFilterBar="true">
+					<fb:FilterGroupItem name="lastname" label="Cognome" groupName="Group1" visibleInFilterBar="true">
 						<fb:control>
 							<MultiComboBox 
-								name="Cognome"
+								name="lastname"
 								items="{
 									path: '/Users',
 									templateShareable: true
