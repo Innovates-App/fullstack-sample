@@ -8,8 +8,8 @@ entity Users : managed {
       firstname : String;
       lastname  : String;
       email     : String;
-      roles     : Composition of many UserRole
-                    on roles.user = $self
+      roles     : Composition of many Roles
+                    on roles.users = $self
 }
 
 
@@ -17,11 +17,5 @@ entity Roles : managed {
   key ID          : UUID;
       name        : String;
       description : String;
-      users       : Composition of many UserRole
-                      on users.role = $self
-}
-
-entity UserRole {
-  key user : Association to Users;
-  key role : Association to Roles
+      users       : Association to Users
 }

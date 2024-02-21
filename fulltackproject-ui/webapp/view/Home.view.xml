@@ -6,30 +6,42 @@
     <Page id="page" title="{i18n>title}">
         <content />
 
-            <fb:FilterBar id="filterbar" search="onAvvio">
-				<fb:filterGroupItems>
-					<fb:FilterGroupItem name="lastname" label="Cognome" groupName="Group1" visibleInFilterBar="true">
-						<fb:control>
-							<MultiComboBox 
-								name="lastname"
-								items="{
-									path: '/Users',
-									templateShareable: true
-								}"
-							>
-								<core:Item key="{ID}" text="{lastname}"/>
-							</MultiComboBox>
-						</fb:control>
-					</fb:FilterGroupItem>
-				</fb:filterGroupItems>
-			</fb:FilterBar>
 
-        <Toolbar >
-            <SearchField search="onSearch" value="{home>/search}"></SearchField>
-        </Toolbar>
+        <fb:FilterBar id="filterbar" search="onAvvio">
+            <fb:filterGroupItems>
+                <fb:FilterGroupItem name="lastname" label="Cognome" groupName="Group1" visibleInFilterBar="true">
+                    <fb:control>
+
+                        <MultiComboBox name="lastname" items="{path:'/Users', templateShareable: true}">
+                            <core:Item key="{ID}" text="{lastname}"></core:Item>
+                        </MultiComboBox>
+                    
+                    </fb:control>
+                </fb:FilterGroupItem>
+
+                <fb:FilterGroupItem name="email" label="EMail" groupName="Group2" visibleInFilterBar="true">
+                    <fb:control>
+
+                        <MultiComboBox name="email" items="{path:'/Users', templateShareable: true}">
+                            <core:Item key="{ID}" text="{email}"></core:Item>
+                        </MultiComboBox>
+                    
+                    </fb:control>
+                </fb:FilterGroupItem>
+
+            </fb:filterGroupItems>
+        </fb:FilterBar>
 
 
-        <Table id="Table" items="{path: '/Users', parameters:{$expand:'roles,Roles'}}">
+        <Table id="user_table" items="{path:'/Users', parameters:{'$expand':'roles'}}">
+        <!-- <Table id="user_table" items="{/Users}"> -->
+
+            <headerToolbar>
+                <Toolbar >
+                    <SearchField search="onSearch" value="{home>/search}"></SearchField>
+                </Toolbar>
+            
+            </headerToolbar>
 
             <columns>
                 <Column >
@@ -41,13 +53,21 @@
                 <Column >
                     <Text text="EMail"></Text>
                 </Column>
+                <Column >
+                    <Text text="Ruolo"></Text>
+                </Column>
+                <Column >
+                    <Text text="Descrizione Ruolo"></Text>
+                </Column>
             </columns>
 
             <items>
                 <ColumnListItem >
-                    <Text  text="{firstname}"></Text>
-                    <Text  text="{lastname}"></Text>
-                    <Text  text="{email}"></Text>
+                    <Text text="{firstname}"></Text>
+                    <Text text="{lastname}"></Text>
+                    <Text text="{email}"></Text>
+                    <Text text="{roles/0/name}"></Text>
+                    <Text text="{roles/0/description}"></Text>
                 </ColumnListItem>
             </items>
         
