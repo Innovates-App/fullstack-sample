@@ -1,7 +1,7 @@
 class Company extends cds.ApplicationService {
     init() {
         const { Users } = this.entities
-        this.after("READ", checkFullStack(checkAuth))
+        this.after("READ", checkAuth(Users))
         return super.init()
     }
 }
